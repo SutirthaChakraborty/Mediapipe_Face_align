@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: myfacealignment
+Version: 0.1
+Summary: A package for face alignment
+Home-page: https://github.com/SutirthaChakraborty/Mediapipe_Face_align
+Author: Your Name
+Author-email: sutirtha@example.com
+Requires-Dist: opencv-python
+Requires-Dist: mediapipe
+Requires-Dist: numpy
