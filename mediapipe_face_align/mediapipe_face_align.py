@@ -107,7 +107,7 @@ def transform_landmarks(landmarks: list, M: np.ndarray) -> list:
     return transformed_landmarks
 
 
-def process(image_path: str) -> tuple:
+def process(img: np.ndarray) -> tuple:
     """
     Processes an image to detect and align a face.
 
@@ -117,8 +117,6 @@ def process(image_path: str) -> tuple:
     Returns:
         tuple: A tuple containing the aligned face image (np.ndarray) and the transformed keypoints (list of tuples).
     """
-    # Load the image from the file
-    img = cv2.imread(image_path, cv2.IMREAD_COLOR)
 
     # Convert the BGR image to RGB.
     rgb_frame = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)

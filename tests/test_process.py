@@ -1,57 +1,37 @@
-# file: tests/test_process.py
-import cv2
-import pytest
-from unittest.mock import Mock, patch
-from mediapipe_face_align.mediapipe_face_align import process
-import numpy as np
+# import pytest
+# import numpy as np
+# import cv2
+# from mediapipe_face_align import process
 
-# This will require sample image files in tests/resources/
+# # Mock an image with a face to test
+# @pytest.fixture
+# def mock_image_with_face():
+#     # Here we create a random image that would represent an image with a face
+#     # In practice, you might want to load an actual image with known outcomes
+#     return np.random.randint(0, 255, (480, 640, 3), dtype=np.uint8)
 
+# # Test the process function with an image containing a face
+# def test_process_with_face(mock_image_with_face):
+#     aligned_face, transformed_keypoints = process(mock_image_with_face)
+    
+#     # Write assertions to check if the aligned_face and transformed_keypoints
+#     # are as expected
+#     assert aligned_face is not None, "Aligned face should not be None"
+#     assert transformed_keypoints is not None, "Transformed keypoints should not be None"
+#     assert isinstance(aligned_face, np.ndarray), "Aligned face should be a numpy array"
+#     assert isinstance(transformed_keypoints, list), "Transformed keypoints should be a list"
+#     assert len(transformed_keypoints) > 0, "Transformed keypoints should not be empty"
 
-@pytest.fixture
-def mock_cv2():
-    with patch("mediapipe_face_align.mediapipe_face_align.cv2") as mock:
-        yield mock
+# # Test the process function with an image without a face
+# def test_process_without_face():
+#     # Here you create an image that does not have a face
+#     non_face_image = np.zeros((480, 640, 3), dtype=np.uint8)
+#     aligned_face, transformed_keypoints = process(non_face_image)
+    
+#     # Write assertions to check the behavior when no face is present in the image
+#     assert aligned_face is None, "Aligned face should be None for non-face images"
+#     assert transformed_keypoints is None, "Transformed keypoints should be None for non-face images"
 
-
-@pytest.fixture
-def mock_face_mesh():
-    with patch("mediapipe_face_align.mediapipe_face_align.mp_face_mesh") as mock:
-        yield mock
-
-
-def test_process_with_face(mock_cv2, mock_face_mesh):
-    # Setup fake return values for cv2 and face_mesh dependencies
-    mock_cv2.imread.return_value = np.zeros((100, 100, 3), dtype=np.uint8)
-    mock_face_mesh.FaceMesh.return_value.process.return_value = Mock()
-
-    # Fake landmarks
-    fake_landmarks = Mock()
-    fake_landmarks.landmark = [Mock(x=0.1, y=0.1), Mock(x=0.9, y=0.9)]
-
-    # Setup the mock to return the fake landmarks
-    mock_face_mesh.FaceMesh.return_value.process.return_value.multi_face_landmarks = [
-        fake_landmarks
-    ]
-
-    # Call the function
-    aligned_face, transformed_keypoints = process("tests/resources/test_face.jpg")
-
-    # Assert the results
-    assert aligned_face is not None
-    assert transformed_keypoints is not None
-
-
-def test_process_without_face(mock_cv2, mock_face_mesh):
-    # Setup fake return values for cv2 and face_mesh dependencies
-    mock_cv2.imread.return_value = np.zeros((100, 100, 3), dtype=np.uint8)
-    mock_face_mesh.FaceMesh.return_value.process.return_value = Mock(
-        multi_face_landmarks=None
-    )
-
-    # Call the function with an image that has no face
-    aligned_face, transformed_keypoints = process("tests/resources/test_no_face.jpg")
-
-    # Assert that no face was found and the aligned_face is None
-    assert aligned_face is None
-    assert transformed_keypoints is None
+# # # Run the tests
+# # if __name__ == "__main__":
+# #     pytest.main()

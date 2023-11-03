@@ -1,7 +1,6 @@
 # file: tests/test_align_face.py
-import numpy as np
+import numpy as np 
 from mediapipe_face_align.mediapipe_face_align import align_face
-
 
 def test_align_face():
     # Create a fake image and fake landmarks
