@@ -1,9 +1,0 @@
-README.md
-setup.py
-myfacealignment/__init__.py
-myfacealignment/mediapipe_face_align.py
-myfacealignment.egg-info/PKG-INFO
-myfacealignment.egg-info/SOURCES.txt
-myfacealignment.egg-info/dependency_links.txt
-myfacealignment.egg-info/requires.txt
-myfacealignment.egg-info/top_level.txt
