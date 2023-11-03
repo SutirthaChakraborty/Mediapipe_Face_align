@@ -2,6 +2,7 @@
 import numpy as np
 from mediapipe_face_align.mediapipe_face_align import transform_landmarks
 
+
 def test_transform_landmarks():
     # Create a fake landmarks and a transformation matrix
     fake_landmarks = [(10, 10), (90, 90)]

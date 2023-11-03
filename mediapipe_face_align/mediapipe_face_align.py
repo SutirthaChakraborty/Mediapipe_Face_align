@@ -52,7 +52,7 @@ def align_face(
     # Calculate the desired right eye x-coordinate based on the desired x-coordinate of the left eye.
     desired_right_eye_x = 1.0 - desired_left_eye[0]
 
-    # Determine the scale of the new resulting image by taking the ratio of the distance 
+    # Determine the scale of the new resulting image by taking the ratio of the distance
     # between eyes in the current image to the ratio of distance in the desired image.
     dist = np.sqrt((dX**2) + (dY**2))
     desired_dist = desired_right_eye_x - desired_left_eye[0]

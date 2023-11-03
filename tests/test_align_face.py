@@ -2,6 +2,7 @@
 import numpy as np
 from mediapipe_face_align.mediapipe_face_align import align_face
 
+
 def test_align_face():
     # Create a fake image and fake landmarks
     fake_image = np.zeros((100, 100, 3), dtype=np.uint8)
