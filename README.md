@@ -1,5 +1,5 @@
 mediapipe_face_align/
-├── myfacealignment/
+├── mediapipe_face_align/
 │   ├── __init__.py
 │   └── my_module.py
 ├── setup.py
